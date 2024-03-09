@@ -35,9 +35,9 @@ explain(){
     if [ -z "$EXPLAIN" ]; then echo -e "\e[36m $1 \e[0m"; fi
 }
 
-echo -e "\e[31m =============================================\e[0m"
-echo -e "\e[31m CPU load/how long the system has been running \e[0m"
-echo -e "\e[31m =============================================\e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m load averages | uptime \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 uptime
 
 e="THE TRAFFIC ANALOGY: http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages
@@ -46,15 +46,15 @@ over 1.00 means there's backup"
 explain "$e"
 seq
 #
-echo -e "\e[31m ======================\e[0m"
-echo -e "\e[31m the kernel ring buffer  \e[0m"
-echo -e "\e[31m ======================\e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m the kernel ring buffer | dmesg \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 dmesg -T | tail
 seq
 #
-echo -e "\e[31m =============================== \e[0m"
-echo -e "\e[31m virtual memory statistics in MB \e[0m"
-echo -e "\e[31m =============================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m virtual memory statistics in MB | vmstat \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 vmstat -S m 1 4
 
 
@@ -88,9 +88,9 @@ CPU
 explain "$e"
 seq
 #
-echo -e "\e[31m ============================= \e[0m"
-echo -e "\e[31m processors related statistics \e[0m"
-echo -e "\e[31m ============================= \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m CPU balance | mpstat \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 mpstat -P ALL 1 1
 e="
 
@@ -108,9 +108,9 @@ all: means All CPUs
 explain "$e"
 seq
 #
-echo -e "\e[31m ========================== \e[0m"
-echo -e "\e[31m statistics for Linux tasks \e[0m"
-echo -e "\e[31m ========================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m process usage | pidstat \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 pidstat 1 1
 
 e="
@@ -128,9 +128,9 @@ Command: The command name of the task."
 explain "$e"
 seq
 #
-echo -e "\e[31m ===================================================================== \e[0m"
-echo -e "\e[31m CPU statistics and input/output statistics for devices and partitions \e[0m"
-echo -e "\e[31m ===================================================================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m disk I/O | iostat \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 iostat -xz 1 1
 
 e="
@@ -157,9 +157,9 @@ svctm   The average service time (in milliseconds) for I/O requests issued to th
 explain "$e"
 seq
 #
-echo -e "\e[31m ================================== \e[0m"
-echo -e "\e[31m free and used memory in the system \e[0m"
-echo -e "\e[31m ================================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m memory usage | free \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 free -m
 
 e="
@@ -171,9 +171,9 @@ shared / buffers / cached: This shows memory usage for specific purposes, these 
 explain "$e"
 seq
 #
-echo -e "\e[31m ==================================== \e[0m"
-echo -e "\e[31m network devices activity information \e[0m"
-echo -e "\e[31m ==================================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m network I/O | sar \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 sar -n DEV 1 1
 e="
 IFACE
@@ -198,9 +198,9 @@ rxmcst/s
 explain "$e"
 seq
 #
-echo -e "\e[31m ========================== \e[0m"
-echo -e "\e[31m TCPv4 activity information \e[0m"
-echo -e "\e[31m ========================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m TCPv4 activity information | sar \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 sar -n TCP 1 1
 
 e="
@@ -219,9 +219,9 @@ oseg/s
 explain "$e"
 seq
 #
-echo -e "\e[31m ========================== \e[0m"
-echo -e "\e[31m TCPv4 activity information \e[0m"
-echo -e "\e[31m ========================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m TCPv4 activity information | sar \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 sar -n ETCP 1 1
 
 e="
@@ -242,9 +242,9 @@ orsts/s
 explain "$e"
 seq
 #
-echo -e "\e[31m ====================== \e[0m"
-echo -e "\e[31m Top 20 Linux processes \e[0m"
-echo -e "\e[31m ====================== \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
+echo -e "\e[31m top 20 Linux processes | top \e[0m"
+echo -e "\e[31m ============================================= \e[0m"
 top -b -n 1|head -n 20
 e="
 PID    - Process ID - The unique ID of the process (commonly used with the kill command)
